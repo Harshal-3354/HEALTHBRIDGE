@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const doctorRoutes = require("./routes/doctorRoutes");
+
 require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
@@ -10,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/doctor", doctorRoutes);
 app.get("/api/test", (req, res) => res.send("API Working ✅"));
 
 mongoose
