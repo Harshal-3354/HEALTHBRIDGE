@@ -78,7 +78,7 @@ Run the development server:
 bash
 Copy
 Edit
-npx nodemon server.js
+nodemon server.js
 Test: http://localhost:5000/api/test → should return "API Working ✅"
 
 🎨 Frontend Setup
@@ -92,7 +92,7 @@ Start the frontend:
 bash
 Copy
 Edit
-npm start
+npm run dev
 Visit: http://localhost:3000
 
 ✅ Features (MVP)
