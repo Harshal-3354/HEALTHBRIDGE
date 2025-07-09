@@ -11,8 +11,29 @@ const generateToken = (user) => {
 };
 
 exports.registerUser = async (req, res) => {
-  const { name, email, password, role, specialization, qualifications } =
-    req.body;
+  const {
+    name,
+    email,
+    password,
+    role,
+    profilePicture,
+    phone,
+    address,
+
+    // Doctor-specific
+    specialization,
+    qualifications,
+    experience,
+    bio,
+    clinicAddress,
+
+    // Patient-specific
+    age,
+    gender,
+    bloodGroup,
+    medicalHistory,
+  } = req.body;
+
   try {
     const existing = await User.findOne({ email });
     if (existing) return res.status(400).json({ error: "User already exists" });
@@ -20,19 +41,36 @@ exports.registerUser = async (req, res) => {
     const newUser = new User({
       name,
       email,
-      passwordHash: password,
+      passwordHash: password, // will be hashed by pre-save hook
       role,
+      profilePicture,
+      phone,
+      address,
       specialization,
       qualifications,
+      experience,
+      bio,
+      clinicAddress,
+      age,
+      gender,
+      bloodGroup,
+      medicalHistory,
     });
 
     await newUser.save();
 
     const token = generateToken(newUser);
-    res
-      .status(201)
-      .json({ token, user: { id: newUser._id, role: newUser.role } });
+    res.status(201).json({
+      token,
+      user: {
+        id: newUser._id,
+        role: newUser.role,
+        name: newUser.name,
+        email: newUser.email,
+      },
+    });
   } catch (err) {
+    console.error("Register error:", err);
     res.status(500).json({ error: "Registration failed" });
   }
 };
