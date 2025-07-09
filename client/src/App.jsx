@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import DoctorsListPage from "./pages/DoctorsListPage";
+import DoctorDetailPage from "./pages/DoctorDetailPage";
 import "./App.css";
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/patient/doctors" element={<DoctorsListPage />} />
+        <Route path="/patient/doctors/:id" element={<DoctorDetailPage />} />
+
         <Route
           path="*"
           element={<div className="p-4 text-center">Page not found</div>}
