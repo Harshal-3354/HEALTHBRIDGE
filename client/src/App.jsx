@@ -5,6 +5,7 @@ import Register from "./pages/auth/Register";
 import DoctorsListPage from "./pages/DoctorsListPage";
 import DoctorDetailPage from "./pages/DoctorDetailPage";
 import DoctorAvailabilityPage from "./pages/DoctorAvailabilityPage";
+import MyAppointmentsPage from "./pages/MyAppointmentsPage";
 // import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/patient/doctors" element={<DoctorsListPage />} />
         <Route path="/patient/doctors/:id" element={<DoctorDetailPage />} />
+        <Route path="/patient/appointments" element={<MyAppointmentsPage />} />
         <Route
           path="/doctor/availability"
           element={<DoctorAvailabilityPage />}

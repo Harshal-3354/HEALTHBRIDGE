@@ -62,3 +62,18 @@ exports.bookAppointment = async (req, res) => {
     res.status(500).json({ error: "Failed to book appointment" });
   }
 };
+
+exports.getPatientAppointments = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const appointments = await Appointment.find({ patientId: id })
+      .populate("doctorId", "name specialization profilePicture")
+      .sort({ startTime: 1 });
+
+    res.json(appointments);
+  } catch (err) {
+    console.error("Error fetching appointments:", err);
+    res.status(500).json({ error: "Failed to fetch appointments" });
+  }
+};
