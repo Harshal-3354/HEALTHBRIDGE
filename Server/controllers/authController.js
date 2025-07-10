@@ -65,8 +65,6 @@ exports.registerUser = async (req, res) => {
       user: {
         id: newUser._id,
         role: newUser.role,
-        name: newUser.name,
-        email: newUser.email,
       },
     });
   } catch (err) {

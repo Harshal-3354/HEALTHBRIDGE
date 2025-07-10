@@ -4,7 +4,8 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import DoctorsListPage from "./pages/DoctorsListPage";
 import DoctorDetailPage from "./pages/DoctorDetailPage";
-import "./App.css";
+import DoctorAvailabilityPage from "./pages/DoctorAvailabilityPage";
+// import "./App.css";
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/patient/doctors" element={<DoctorsListPage />} />
         <Route path="/patient/doctors/:id" element={<DoctorDetailPage />} />
-
+        <Route
+          path="/doctor/availability"
+          element={<DoctorAvailabilityPage />}
+        />
         <Route
           path="*"
           element={<div className="p-4 text-center">Page not found</div>}

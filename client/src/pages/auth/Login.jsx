@@ -19,6 +19,7 @@ const Login = () => {
         form
       );
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.user.role);
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.error || "Login failed");

@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const doctorRoutes = require("./routes/doctorRoutes");
 const authRoutes = require("./routes/authRoutes");
+const availabilityRoutes = require("./routes/availabilityRoutes");
+const appointmentRoutes = require("./routes/appointmentRoutes");
 
 require("dotenv").config();
 
@@ -12,6 +14,8 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/doctors", doctorRoutes);
+app.use("/api/availability", availabilityRoutes);
+app.use("/api/appointments", appointmentRoutes);
 app.get("/api/test", (req, res) => res.send("API Working ✅"));
 
 mongoose
