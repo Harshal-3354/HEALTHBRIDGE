@@ -77,3 +77,35 @@ exports.getPatientAppointments = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch appointments" });
   }
 };
+
+exports.getDoctorAppointments = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const appointments = await Appointment.find({ doctorId: id })
+      .populate("patientId", "name email photo")
+      .sort({ startTime: 1 }); // ascending by time
+    res.json(appointments);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch appointments" });
+  }
+};
+
+exports.updateAppointmentStatus = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  if (!["completed", "cancelled"].includes(status)) {
+    return res.status(400).json({ error: "Invalid status" });
+  }
+
+  try {
+    const appointment = await Appointment.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true }
+    );
+    res.json(appointment);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update status" });
+  }
+};

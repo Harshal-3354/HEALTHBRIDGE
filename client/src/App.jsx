@@ -6,6 +6,7 @@ import DoctorsListPage from "./pages/DoctorsListPage";
 import DoctorDetailPage from "./pages/DoctorDetailPage";
 import DoctorAvailabilityPage from "./pages/DoctorAvailabilityPage";
 import MyAppointmentsPage from "./pages/MyAppointmentsPage";
+import DoctorAppointmentsPage from "./pages/DoctorAppointmentsPage";
 // import "./App.css";
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
         <Route
           path="/doctor/availability"
           element={<DoctorAvailabilityPage />}
+        />
+        <Route
+          path="/doctor/appointments"
+          element={<DoctorAppointmentsPage />}
         />
         <Route
           path="*"
